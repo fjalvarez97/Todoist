@@ -18,9 +18,17 @@ public class Test
         System.out.println("\nMostramos todas las tareas...");
         todoist.mostrarTareas();
         System.out.println("\nEliminamos la segunda tarea...");
-        todoist.eliminarTarea(1);
+        boolean valorDevuelto;
+        valorDevuelto = todoist.eliminarTarea(1);
+        System.out.println("El metodo de eliminar anterior devolvio...");
+        System.out.println(valorDevuelto);
         System.out.println("\nMostramos todas las tareas...");
         todoist.mostrarTareas();
+        System.out.println("\nIntentamos borrar una tarea que no existe...");
+        valorDevuelto = todoist.eliminarTarea(1000);
+        System.out.println("El metodo de eliminar anterior devolvio...");
+        System.out.println(valorDevuelto);        
+        System.out.println("\nMostramos todas las tareas...");
+        todoist.mostrarTareas();        
     }
-    
 }
