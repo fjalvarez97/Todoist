@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Todoist here.
  *
@@ -7,43 +7,21 @@
  */
 public class Todoist
 {
-    // Primera Tarea
-    private String tarea0;
-    // Segunda Tarea
-    private String tarea1;
-    // Tercera Tarea
-    private String tarea2;
+    private ArrayList<String> tareas;
     /**
      * Constructor de objetos de la clase Todoist
-     * Crea 3 Tareas vacías
+     * Crea 10 Tareas vacías
      */
     public Todoist()
     {
-        // 3 Tareas vacías.
-        tarea0 = null;
-        tarea1 = null;
-        tarea2 = null;
+        // 10 Tareas vacías (Ampliable)
+        tareas = new ArrayList<String>();
     }
-
-    /**
-     * Método que asigna un nombre de tarea dependiendo del parámetro posicion
-     * para saber a que tarea ponerlo
-     */
-    public void addTarea(String nombreTarea, int posicion)
+    
+    public void addTarea(String nombreTarea)
     {
-        // Añade el nombre a una tarea dependiendo del parámetro posición
-        if (posicion == 0) 
-        {
-            tarea0 = nombreTarea;
-        }
-        else if (posicion == 1)
-        {
-            tarea1 = nombreTarea;
-        }
-        else if (posicion == 2)
-        {
-            tarea2 = nombreTarea;
-        }
+        // Agrega una tarea a la lista
+        tareas.add(nombreTarea);
     }
     
     /**
@@ -51,19 +29,39 @@ public class Todoist
      */
     public void mostrarTareas()
     {
+        // Muestra por pantalla las tareas existentes 
         System.out.println("Tareas existentes:");
-        if (tarea0 != null)
-        {
-            System.out.println(tarea0);
-        }
-        if (tarea1 != null)
-        {
-            System.out.println(tarea1);
-        }
-        if (tarea2 != null)
-        {
-            System.out.println(tarea2);
-        }
+        System.out.println(tareas);
     }
     
+    /**
+     * Muestra el numero de tareas almacenadas
+     */
+    public int getNumeroDeTareasPendientes()
+    {
+        // Devuelve el numero de tareas de la lista
+        return tareas.size();
+    }
+    
+    public void mostrarNumeroDeTareasPendientes()
+    {
+        // Imprime el numero de tareas pendientes
+        System.out.println("Tienes " + tareas.size() + " tarea(s) pendientes.");
+    }
+    
+    /**
+     * Elimina la tarea que ocupa la posicion indicada como
+     * parametro (empezando en 0)
+     */
+    
+    public boolean eliminarTarea(int posicionTarea)
+    {
+        boolean valorADevolver = false;
+        if (posicionTarea >= 0 && posicionTarea < tareas.size())
+        {
+            tareas.remove(posicionTarea);
+             valorADevolver = true;
+        }
+        return valorADevolver;
+    }
 }
