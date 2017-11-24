@@ -56,13 +56,11 @@ class Todoist
     
     public boolean eliminarTarea(int posicionTarea)
     {
-        boolean valorADevolver = false;
         if (esValidoElIndice(posicionTarea))
         {
             tareas.remove(posicionTarea);
-            valorADevolver = true;
         }
-        return valorADevolver;
+        return esValidoElIndice(posicionTarea);
     }
     
     /**
@@ -72,21 +70,29 @@ class Todoist
     
     public boolean esValidoElIndice(int indice)
     {
-        boolean valorADevolver = false;
-        if (indice >= 0 && indice < tareas.size())
-        {
-            valorADevolver = true;
-        }
-        return valorADevolver;
+        return (indice >= 0 && indice < tareas.size());
     }
     
     public boolean hayTareasPendientes()
     {
-        boolean hayTareas = false;
-        if (tareas.size()>0)
-        {
-            hayTareas = true;
-        }
-        return hayTareas;
+        return !tareas.isEmpty();
     }
+    
+    /** 
+     * Metodo que imprime todas las tareas existentes, una por linea.
+     * El metodo imprime el numero de posicion de la tarea antes del
+     * nombre de la tarea.
+     */   
+      public void mostrarTareasNumeradas()
+    {
+        int numeroPosicion = 1;
+        // Bucle for each (":" --> Indica que es for each)
+        for (String tarea : tareas){
+            System.out.println(numeroPosicion + ". " + tarea);
+            numeroPosicion++;
+        }
+    }
+     
+     
+    
 }
