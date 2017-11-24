@@ -85,11 +85,21 @@ class Todoist
      */   
       public void mostrarTareasNumeradas()
     {
-        int numeroPosicion = 1;
+        int numeroPosicion = 0;
         // Bucle for each (":" --> Indica que es for each)
         for (String tarea : tareas){
             System.out.println(numeroPosicion + ". " + tarea);
             numeroPosicion++;
+        }
+    }
+    
+      public void mostrarTareasNumeradasImpares()
+    {
+        int numeroPosicion = 1;
+        // Bucle for each (":" --> Indica que es for each)
+        for (String tarea : tareas){
+            System.out.println(numeroPosicion + ". " + tarea);
+            numeroPosicion +=2;
         }
     }
      
