@@ -29,6 +29,19 @@ public class Test
         System.out.println("El metodo de eliminar anterior devolvio...");
         System.out.println(valorDevuelto);        
         System.out.println("\nMostramos todas las tareas...");
-        todoist.mostrarTareas();        
+        System.out.println("\n### Mostramos todas las tareas...");
+        todoist.mostrarTareas();    
+       
+        System.out.println("\n### Mostramos las tareas numeradas...");
+        todoist.mostrarTareasNumeradas();
+        
+        System.out.println("\n### Mostramos las tareas impares unicamente...");
+        todoist.mostrarTareasImpares();
+        
+        System.out.println("\n### Mostramos las tareas que contienen el texto 'estudiar'...");
+        todoist.mostrarCoincidentes("Estudiar");  
+        
+        System.out.println("\n### Mostramos las tareas que contienen el texto 'Estudiar'...");
+        todoist.mostrarCoincidentes("estudiar");
     }
 }

@@ -93,16 +93,107 @@ class Todoist
         }
     }
     
-      public void mostrarTareasNumeradasImpares()
+      public void mostrarTareasImpares()
     {
-        int numeroPosicion = 1;
-        // Bucle for each (":" --> Indica que es for each)
-        for (String tarea : tareas){
-            System.out.println(numeroPosicion + ". " + tarea);
-            numeroPosicion +=2;
+        int contadorTarea = 0;
+        for (String tarea : tareas) {
+           
+            if (contadorTarea %2 == 0)
+            {
+                System.out.println(tarea);
+            }
+             contadorTarea ++;
         }
     }
-     
-     
     
+    /**
+     * Muestra por pantalla todas las tareas que contienen el texto indicado
+     * como parámetro, una en cada linea, y ademas muestra un mensaje al final indicando
+     * el numero de coincidencias encontradas. Si no hay ninguna que contenga el texto
+     * buscado informa de la situacion. Este metodo es insensible a mayusculas o minusculas
+     */
+    
+    public void mostrarCoincidentes (String textoABuscar)
+    {
+        int numeroCoincidencias = 0;
+        // Contador de coincidencias
+        for (String tarea: tareas)
+        {
+            if (tarea.toLowerCase().contains(textoABuscar.toLowerCase()))
+            {
+                System.out.println(tarea);
+                numeroCoincidencias ++;
+                //+1 Contador coincidencias
+            }
+        }
+   
+        if (numeroCoincidencias == 0)
+        {
+            System.out.println("No hay ninguna tarea que contenga ese texto");
+            // Devuelve un mensaje si no hay ninguna coincidencia (contador == 0)
+        }
+        else 
+        {
+            System.out.println("Se han encontrado " + numeroCoincidencias + " coincidencias");
+            // Devuelve el contador de coincidencias
+        }
+    } 
+    
+    /**
+     * Muestra por pantalla la primera tarea que contenga el texto indicado como 
+     * parametro. En caso de que no haya ninguna coincidencia no muestra nada
+     */
+    
+    public void mostrarPrimeraCoindicente(String textoABuscar)
+    {
+        boolean hayPrimeraTarea = false;
+        //Indica si la primera tarea ya se ha imprimido
+        for (String tarea: tareas)
+        {
+            // Se imprime la primera tarea y ninguna mas .
+            if (hayPrimeraTarea == false && tarea.toLowerCase().contains(textoABuscar.toLowerCase()))
+            {
+                hayPrimeraTarea = true; 
+                System.out.println("La primera tarea coincidente es " + tarea);
+            }
+        }
+    }
+    
+    /**
+     * Muestra por pantalla todas las tareas existentes, una por línea,
+     * usando un bucle while
+     */
+    public void mostrarTareas2()
+    {
+        int posicionTareaActual = 0;
+        while (posicionTareaActual < tareas.size()) {
+            System.out.println(tareas.get(posicionTareaActual));
+            posicionTareaActual++;
+        }
+    }
+    
+    /**
+     * Muestra las tareas numeradas usando un bucle while empezando en 1
+     */
+    public void mostrarTareasNumeradas2()
+    {
+        int posicionTareaActual = 0;
+        while(posicionTareaActual < tareas.size()){
+            System.out.println((posicionTareaActual + 1) + ".-" + tareas.get(posicionTareaActual));
+            posicionTareaActual++;
+        }
+    } 
+    
+    /**
+     * Muestra por pantalla las primeras n tareas (siendo n un parametro). En
+     * caso de que no haya suficientes tareas muestra solo las que haya.
+     */
+    public void mostrarNPrimeras (int n)
+    {
+       int posicionTareaActual = 0;
+       while(posicionTareaActual < tareas.size() && posicionTareaActual < n){
+            System.out.println(tareas.get(posicionTareaActual));
+            posicionTareaActual++;
+       }
+    }    
 }
